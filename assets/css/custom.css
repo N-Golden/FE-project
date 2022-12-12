@@ -1,0 +1,28 @@
+#templatemo_nav_top { min-height: 40px;}
+.text-success {
+    color: #59ab6e !important;
+}
+.logo {
+    font-weight: 500 !important;
+}
+.h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 48px !important;
+    font-weight: 200 !important;
+}
+
+body, ul, li, p, a, label, input, div {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px !important;
+    font-weight: 300 !important;
+}
+.product-wap {
+    box-shadow: 0px 5px 10px 0px rgb(0 0 0 / 10%);
+}
+.templatemo-accordion a {
+    color: #000;
+}
+.h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px !important;
+}

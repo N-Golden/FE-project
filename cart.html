@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="./assets/css/custom.css">
+    <link rel="stylesheet" href="./assets/css/cart.css">
+    <link rel="stylesheet" href="./assets/css/fontawesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body>
+    <!-- nav-->
+    <nav class="navbar bg-dark" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between ">
+                <div>
+                    <i class="fa fa-envelope mx-2"></i> <a class="text-light" href="#">info@company.com</a> <i
+                        class="fa fa-phone mx-2"></i> <a class="text-light" href="#">010-020-0340</a>
+                </div>
+                <div>
+                    <a href="" class="btn btn-light">LOGIN</a>
+                    <a href="register.html" class="btn btn-light">REGISTER</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Header -->
+
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex">
+
+            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html"> Zay </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#main_nv"
+                aria-controls="main_nv" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse flex-fill  d-lg-flex justify-content-around" id="main_nv">
+                <ul class="nav navbar-nav d-flex">
+                    <li class="nav-item"><a class="nav-link" href="/home.html">Home</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html">About</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/shop.html">Shop</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/">Cart</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    <!-- Close Header -->
+    <section ng-app="myapp" ng-controller="ctrl" class="h-100 h-custom" style="background-color: #d2c9ff;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="row g-0">
+                    <div class="col-lg-8 bg-white">
+                        <div class="p-5">
+                            <div class="d-flex justify-content-between align-items-center mb-5">
+                                <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+
+                            </div>
+                            <hr class="my-4">
+
+                            <div ng-repeat="i in items">
+                                <div class="col-12 mb-4 d-flex justify-content-between align-items-center">
+                                    <div class="col-md-2 col-lg-2 col-xl-2">
+                                        <img src="./assets/image/{{i.image}}" class="img-fluid">
+                                    </div>
+                                    <div class="col-md-3 col-lg-3 col-xl-3">
+                                        <h6 class="text-muted">Shirt</h6>
+                                        <h6 class="text-black mb-0">{{i.name}}</h6>
+                                    </div>
+                                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                        <button ng-click="descressNum($index)" class="btn btn-link px-2 previous">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <input min="0" name="quantity" value="{{i.num}}" type="number"
+                                            class="form-control form-control-sm form1" />
+                                        <button ng-click="increaseNum($index)" class="btn btn-link px-2 next">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-3 col-lg-2 col-xl-2 ">
+                                        <h6 class="mb-0 price">{{i.price}}</h6>
+                                    </div>
+
+                                    <div ng-click="remove($index)" class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                        <a href="" class="text-muted"><i class="fas fa-times"></i></a>
+                                    </div>
+                                </div>
+                                <hr class="my-4">
+                            </div>
+
+
+                            <div class="pt-5">
+                                <h6 class="mb-0"><a href="./shop.html" class="text-body"><i
+                                            class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 bg-grey">
+                        <div class="p-5">
+                            <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                            <hr class="my-4">
+
+                            <div class="d-flex justify-content-between mb-5">
+                                <h5 class="text-uppercase">Total price</h5>
+                                <h5 id="total">{{total}}</h5>
+                            </div>
+                            <div>
+                                <h6 class="text-uppercase">Phone:</h6>
+                                <input type="phone" value="">
+                            </div>
+                            <button type="button" class="btn btn-dark btn-lg">Register</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-dark" id="tempaltemo_footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-success border-bottom pb-3 logo">Zay
+                        Shop</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><i class="fas fa-map-marker-alt fa-fw"></i> 123
+                            Consectetur at ligula 10660</li>
+                        <li><i class="fa fa-phone fa-fw"></i>
+                            010-020-0340</a>
+                        </li>
+                        <li><i class="fa fa-envelope fa-fw"></i>
+                            info@company.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li>Luxury</li>
+                        <li>Sport Wear</li>
+                        <li>Men's Shoes</li>
+                        <li>Women's
+                            Shoes</li>
+                        <li>Popular
+                            Dress</li>
+                        <li>Gym
+                            Accessories</li>
+                        <li>Sport Shoes</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further
+                        Info</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li>Home</li>
+                        <li>About Us</li>
+                        <li>Shop
+                            Locations</li>
+                        <li>FAQs</li>
+                        <li>Contact</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="row text-">
+                <div class="col-12 mb-3">
+                    <div class="w-100 my-3 border-top border-light"></div>
+                </div>
+                <div class="col-auto me-auto">
+                    <ul class="list-inline ">
+                        <li class="list-inline-item border border-light rounded-circle">
+                            <a class="text-light text-decoration-none" target="_blank" href=""><i
+                                    class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                        </li>
+                        <li class="list-inline-item border border-light rounded-circle ">
+                            <a class="text-light text-decoration-none" target="_blank"
+                                href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+                        </li>
+                        <li class="list-inline-item border border-light rounded-circle ">
+                            <a class="text-light text-decoration-none" target="_blank" href=""><i
+                                    class="fab fa-twitter fa-lg fa-fw"></i></a>
+                        </li>
+                        <li class="list-inline-item border border-light rounded-circle ">
+                            <a class="text-light text-decoration-none" target="_blank" href=""><i
+                                    class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-auto">
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail"
+                            placeholder="Email address">
+                        <div class="input-group-text btn-success text-light">Subscribe</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("ctrl", function ($scope) {
+            $scope.items = [{
+                    image: "design_1.jpg",
+                    name: 'ao1',
+                    price: 10000,
+                    num: 2
+                },
+                {
+                    image: "design_2.jpg",
+                    name: 'ao2',
+                    price: 20000,
+                    num: 1
+                },
+                {
+                    image: "design_3.jpg",
+                    name: 'ao3',
+                    price: 15000,
+                    num: 1
+                }
+
+
+            ]
+            $scope.remove = function (index) {
+                $scope.items.splice(index, 1)
+                $scope.loopItems();
+            }
+
+            $scope.loopItems = function () {
+                $scope.total = 0;
+                $scope.items.forEach(i => {
+                    $scope.total += i.price * i.num
+                });
+
+            }
+
+            $scope.descressNum = function (index) {
+                if ($scope.items[index].num > 0) {
+                    $scope.items[index].num--
+                    $scope.loopItems();
+                }
+            }
+
+            $scope.increaseNum = function (index) {
+
+                $scope.items[index].num++
+                $scope.loopItems();
+
+            }
+            $scope.loopItems();
+
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/register.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/fontawesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-app="myapp">
+    <div ng-controller="ctrl" class="container">
+        <div class="card bg-light">
+            <article class="card-body mx-auto" style="max-width: 400px;">
+                <h4 class="card-title mt-3 text-center">Create Account</h4>
+                <p class="text-center">Get started with your free account</p>
+                <p>
+                    <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
+                    <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via
+                        facebook</a>
+                </p>
+                <p class="divider-text">
+                    <span class="bg-light">OR</span>
+                </p>
+                <form name="formRegis">
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                        </div>
+                        <input name="fullname" class="form-control" placeholder="Full name" type="text" ng-model="fullname" required>
+                        <span ng-show="formRegis.fullname.$invalid && formRegis.fullname.$touched">Không được để trống </span>
+                    </div>
+                    <br>
+
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                        </div>
+                        <input name="email" class="form-control" placeholder="Email address" type="email" ng-model="email" required>
+                        <span ng-show="formRegis.email.$invalid && formRegis.email.$touched">Không đúng định dạng email </span>
+                    </div>
+
+                    <br>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                        </div>
+                        <input name="phoneNumber" class="form-control" placeholder="Phone number" type="text" ng-pattern="patterNumPhoneVN" ng-model="phoneNumber">
+                        <span ng-show="formRegis.phoneNumber.$error.pattern && formRegis.phoneNumber.$touched">Không đúng định dạng phone VN</span>
+                    </div>
+                    <br>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                        <input ng-blur="check()" class="form-control" placeholder="Create password" type="password" name="password" ng-model="password" required>
+                        <span ng-show="formRegis.password.$invalid && formRegis.password.$touched">Không được để trống </span>
+                    </div>
+                    <br>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                        <input ng-blur=checkPassword() class="form-control" placeholder="Repeat password" type="password" name="repeatPass" ng-model="confirmPass">
+                        <span>{{error}}</span>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Create Account </button>
+                    </div>
+                    <br>
+                    <p class="text-center">Have an account? <a href="">Log In</a> </p>
+                    </form>
+            </article>
+        </div> <!-- card.// -->
+
+    </div>
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("ctrl", function ($scope) {
+            $scope.patterNumPhoneVN = "^(0|84)(2(0[3-9]|1[0-6|8|9]|2[0-2|5-9]|3[2-9]|4[0-9]|5[1|2|4-9]|6[0-3|9]|7[0-7]|8[0-9]|9[0-4|6|7|9])|3[2-9]|5[5|6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])([0-9]{7})$"
+            $scope.checkPassword = function(){
+                if($scope.confirmPass != $scope.password){
+                    $scope.error = "Không trùng mật khẩu";
+                }else{
+                    $scope.error = null;
+                }
+            }
+            $scope.check = function(){
+                if( typeof $scope.confirmPass != "undefined"){
+                    $scope.checkPassword();
+                }
+            
+                
+            }
+        })
+    </script>
+</body>
+
+</html>
